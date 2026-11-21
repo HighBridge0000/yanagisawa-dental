@@ -350,6 +350,60 @@ nav.g ul{gap:16px!important;font-size:.84rem!important}nav.g a{white-space:nowra
 .lg-today{box-shadow:inset 0 0 0 2px var(--sky);background:var(--sky-l);color:var(--navy)}
 @media(max-width:560px){.cal{padding:12px}.cal-table td{height:58px;padding:2px}.cal-table td .d{font-size:.78rem}.cal-table .bd{font-size:.6rem;padding:0 2px}.cal-title{font-size:1rem}.calbox{padding:14px}.bd.hn{display:none}}
 
+/* ===== 設備ショーケース ===== */
+.showcase{background:radial-gradient(900px 500px at 85% 0%,rgba(25,181,216,.22),transparent 60%),linear-gradient(170deg,#0a1b2e,#11304d);color:#fff;overflow:hidden}
+.showcase .eyebrow{color:var(--sky)}
+.showcase .sec-title{color:#fff}
+.showcase .sec-lead{color:#b9cbd8}
+.sc-data{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
+.sc-item{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:14px;overflow:hidden}
+.sc-item img{width:100%;aspect-ratio:3/2;object-fit:cover;display:block}
+.sc-item div{padding:14px 16px}.sc-item h3{font-size:1.05rem;margin-bottom:4px}.sc-item p{margin:0;font-size:.88rem;color:#cfe0ea}
+.js .sc-data{display:none}
+.sc{display:grid;grid-template-columns:1.15fr .85fr;gap:44px;align-items:center}
+.sc[hidden]{display:none}
+@media(max-width:900px){.sc{grid-template-columns:1fr;gap:24px}}
+.sc-visual{position:relative;aspect-ratio:4/3;border-radius:22px;overflow:hidden;background:#0d2540;box-shadow:0 30px 60px rgba(0,0,0,.35);touch-action:pan-y}
+.sc-slide{position:absolute;inset:0;opacity:0;visibility:hidden;transition:opacity .9s ease,visibility .9s}
+.sc-slide.on{opacity:1;visibility:visible}
+.sc-bg{position:absolute;inset:-6%;width:112%;height:112%;object-fit:cover;filter:blur(22px) saturate(1.1) brightness(.62);transform:scale(1.05)}
+.sc-slide.on .sc-bg{animation:kb 10s ease-out forwards}
+@keyframes kb{from{transform:scale(1.05)}to{transform:scale(1.2) translate(-1.5%,-1%)}}
+.sc-veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,27,46,.1),rgba(10,27,46,.55))}
+.sc-fgwrap{position:absolute;inset:0;display:grid;place-items:center;padding:7%}
+.sc-fg{max-width:100%;max-height:100%;width:auto;height:auto;border-radius:14px;box-shadow:0 24px 50px rgba(0,0,0,.45);border:3px solid rgba(255,255,255,.9);opacity:0;transform:translateY(28px) scale(.94);clip-path:inset(0 100% 0 0 round 14px);transition:opacity .8s ease .2s,transform 1s cubic-bezier(.2,.7,.1,1) .2s,clip-path 1s cubic-bezier(.2,.7,.1,1) .2s}
+.sc-slide.on .sc-fg{opacity:1;transform:none;clip-path:inset(0 0 0 0 round 14px)}
+.sc-slide.noimg .sc-fgwrap{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M30 14c-10 0-17 8-17 19 0 11 5 17 8 30 2.5 11 4 23 9 23s6-16 10-16 5 16 10 16 6.500-12 9-23c3-13 8-19 8-30 0-11-7-19-17-19-7 0-9 3-10 3s-3-3-10-3z' transform='translate(5 0)' fill='none' stroke='%2373cbe2' stroke-width='2'/%3E%3C/svg%3E") center/22% no-repeat}
+.sc-slide.noimg .sc-fg,.sc-slide.noimg .sc-bg{display:none}
+.sc-ghost{position:absolute;left:18px;bottom:-14px;font-family:var(--latin);font-style:italic;font-size:clamp(5rem,12vw,9rem);line-height:1;color:transparent;-webkit-text-stroke:1.5px rgba(255,255,255,.35);pointer-events:none;z-index:2}
+.sc-info{min-height:300px}
+.sc-count{font-family:var(--latin);font-style:italic;color:var(--sky);letter-spacing:.1em;display:flex;align-items:baseline;gap:6px}
+.sc-count b{font-size:2.6rem;font-weight:400;color:#fff}
+.sc-count span{color:#8fa8ba}
+.sc-count em{font-family:var(--sans);font-style:normal;font-size:.75rem;letter-spacing:.1em;margin-left:10px;border:1px solid var(--sky);color:var(--sky);border-radius:999px;padding:1px 12px}
+.sc-info h3{font-size:clamp(1.6rem,3vw,2.2rem);margin:8px 0 14px}
+.sc-info p{margin:0 0 22px;color:#d7e5ee;min-height:6.6em}
+.sc-info .sw{animation:inUp .7s cubic-bezier(.2,.7,.1,1) both}
+@keyframes inUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.sc-ctrl{display:flex;gap:10px;margin-bottom:18px}
+.sc-ctrl button{width:46px;height:46px;border-radius:50%;border:1.5px solid rgba(255,255,255,.5);background:transparent;color:#fff;font-size:1.3rem;cursor:pointer;display:grid;place-items:center;transition:background .25s,color .25s,transform .25s}
+.sc-ctrl button:hover{background:var(--sky);border-color:var(--sky);color:var(--navy);transform:scale(1.06)}
+.sc-ctrl #scPlay{font-size:.7rem;margin-left:6px}
+.sc-prog{height:3px;background:rgba(255,255,255,.18);border-radius:3px;overflow:hidden}
+.sc-prog span{display:block;height:100%;width:0;background:var(--sky)}
+.sc-prog span.run{animation:prog 7s linear forwards}
+.sc.paused .sc-prog span.run{animation-play-state:paused}
+@keyframes prog{from{width:0}to{width:100%}}
+.sc-nav{grid-column:1/-1;list-style:none;margin:10px 0 0;padding:0;display:grid;grid-template-columns:repeat(11,1fr);gap:8px}
+@media(max-width:900px){.sc-nav{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:8px;padding-bottom:8px;margin-inline:-20px;padding-inline:20px}.sc-nav li{flex:0 0 92px;scroll-snap-align:start}}
+.sc-nav button{width:100%;background:rgba(255,255,255,.06);border:1.5px solid transparent;border-radius:10px;padding:0;color:#cfe0ea;cursor:pointer;text-align:center;font-family:var(--sans);overflow:hidden;transition:border-color .3s,background .3s,transform .3s}
+.sc-nav button:hover{transform:translateY(-3px);background:rgba(255,255,255,.12)}
+.sc-nav button[aria-current="true"]{border-color:var(--sky);background:rgba(25,181,216,.18);color:#fff}
+.sc-nav .th{display:block;aspect-ratio:4/3;background:#0d2540 center/cover no-repeat;position:relative}
+.sc-nav .th i{position:absolute;left:4px;top:2px;font-family:var(--latin);font-size:.75rem;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.7)}
+.sc-nav .nm{display:block;font-size:.66rem;line-height:1.3;padding:5px 3px 6px}
+@media(prefers-reduced-motion:reduce){.sc-slide,.sc-fg{transition:none!important}.sc-slide.on .sc-bg{animation:none!important}.sc-info .sw{animation:none!important}}
+
 /* reveal */
 .js .rv{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease}
 .js .rv.in{opacity:1;transform:none}
@@ -409,7 +463,6 @@ nav.g ul{gap:16px!important;font-size:.84rem!important}nav.g a{white-space:nowra
     <nav class="g" id="gnav" aria-label="メインメニュー">
       <ul>
         <li><a href="#services">診療内容</a></li>
-        <li><a href="#strengths">当院の特長</a></li>
         <li><a href="#equipment">設備紹介</a></li>
         <li><a href="#flow">ご来院の流れ</a></li>
         <li><a href="#access">アクセス</a></li>
@@ -470,33 +523,38 @@ nav.g ul{gap:16px!important;font-size:.84rem!important}nav.g a{white-space:nowra
   </div>
 </section>
 
-<section id="strengths" class="alt">
+<section id="equipment" class="showcase">
   <div class="wrap">
-    <span class="eyebrow">Features</span>
-    <h2 class="sec-title rv">当院の特長</h2>
-    <p class="sec-lead rv">通いやすく、落ち着いて受診していただくための院内づくりを大切にしています。</p>
-    <div class="badges">
-      <div class="badge rv"><div class="bph"><img src="photo-f-waiting.jpg" alt="待合室の写真" loading="lazy" width="1200" height="800" onerror="this.style.display='none'"></div><div class="circle"><svg aria-hidden="true"><use href="#i-leaf"/></svg></div><h3>木の温もりの待合室</h3><p>木の温もりを感じる、落ち着いた空間です。歯科のイメージを感じさせないよう配慮しています。衛生士が作る掲示板で、おすすめの治療やケア用品もご案内しています。</p></div>
-      <div class="badge rv"><div class="bph"><img src="photo-f-sterile.jpg" alt="除菌・滅菌室の写真" loading="lazy" width="1200" height="800" onerror="this.style.display='none'"></div><div class="circle"><svg aria-hidden="true"><use href="#i-shield"/></svg></div><h3>除菌・滅菌への取り組み</h3><p>診療ドリルや器具の滅菌を、患者様お一人ずつ治療前に準備しています。手では落としにくい汚れを洗浄する、ミーレ社のジェットウォッシャーを使用しています。</p></div>
-      <div class="badge rv"><div class="bph"><img src="photo-f-careroom.jpg" alt="ケアルームの写真" loading="lazy" width="1200" height="800" onerror="this.style.display='none'"></div><div class="circle"><svg aria-hidden="true"><use href="#i-room"/></svg></div><h3>完全個室のケアルーム</h3><p>主に自費診療・ホワイトニング・口腔内メンテナンスで使う、完全個室です。患者様お一人の時間を確保して施術します。</p></div>
-      <div class="badge rv"><div class="bph"><img src="photo-f-prevent.jpg" alt="予防管理の写真" loading="lazy" width="1200" height="800" onerror="this.style.display='none'"></div><div class="circle"><svg aria-hidden="true"><use href="#i-heart"/></svg></div><h3>見える説明と予防管理</h3><p>歯科衛生士が口腔内ケア、歯周予防、ブラッシング指導を行います。言葉だけでは伝わりにくいため、ビジュアルでの説明を心がけています。</p></div>
-    </div>
-  </div>
-</section>
-
-<section id="equipment">
-  <div class="wrap">
-    <span class="eyebrow">Equipment</span>
-    <h2 class="sec-title rv">設備紹介</h2>
-    <p class="sec-lead rv">診断・治療・メンテナンスに使用している主な機器です。（実績・事例は、確認が取れた内容のみ掲載するため、現時点では設備紹介としています。）<span class="tmp">仮</span></p>
-    <div class="equip">
-      <div class="eq rv"><span class="ph eqph"><img src="photo-eq-ceph.jpg" alt="セファロレントゲンの写真" loading="lazy" width="1200" height="800" onerror="this.style.display='none'"></span><div class="eqb"><h3>セファロレントゲン</h3><p>デンタル切り出し機能を搭載した、デジタルパノラマ・セファロ撮影装置です。</p></div></div>
-      <div class="eq rv"><span class="ph eqph"><img src="photo-eq-implant.jpg" alt="インプラント機器の写真" loading="lazy" width="1200" height="800" onerror="this.style.display='none'"></span><div class="eqb"><h3>インプラント機器</h3><p>ノーベルバイオケア社の手術機器です。</p></div></div>
-      <div class="eq rv"><span class="ph eqph"><img src="photo-eq-scanner.jpg" alt="口腔スキャナーの写真" loading="lazy" width="1200" height="800" onerror="this.style.display='none'"></span><div class="eqb"><h3>口腔スキャナー</h3><p>印象材で型を取らず、スキャンで歯型を採る機器です。3Dデジタルデータとして記録できます。</p></div></div>
-      <div class="eq rv"><span class="ph eqph"><img src="photo-eq-caries.jpg" alt="う蝕検出装置の写真" loading="lazy" width="1200" height="800" onerror="this.style.display='none'"></span><div class="eqb"><h3>う蝕検出装置</h3><p>目では見えない、むし歯や歯のひび（クラック）の確認に使います。</p></div></div>
-      <div class="eq rv"><span class="ph eqph"><img src="photo-eq-ecg.jpg" alt="心電図機器の写真" loading="lazy" width="1200" height="800" onerror="this.style.display='none'"></span><div class="eqb"><h3>心電図機器</h3><p>症状に応じて、血圧・心電図などを測りながら治療することがあります。</p></div></div>
-      <div class="eq rv"><span class="ph eqph"><img src="photo-eq-breath.jpg" alt="口臭検査機器の写真" loading="lazy" width="1200" height="800" onerror="this.style.display='none'"></span><div class="eqb"><h3>口臭検査機器</h3><p>口腔内の口臭の検査が簡単にできます。お気軽にご相談ください。</p></div></div>
-      <div class="eq rv"><span class="ph eqph"><img src="photo-eq-airflow.jpg" alt="エアフローの写真" loading="lazy" width="1200" height="800" onerror="this.style.display='none'"></span><div class="eqb"><h3>エアフロー</h3><p>ケアルームで使用します。自費の口腔メンテナンスで、着色・茶渋・タバコの汚れの除去に使う機器です。</p></div></div>
+    <span class="eyebrow">Facility &amp; Equipment</span>
+    <h2 class="sec-title rv">院内・設備のご紹介</h2>
+    <p class="sec-lead rv">落ち着いて受診していただくための院内づくりと、診療を支える機器をご紹介します。</p>
+    <ol class="sc-data" id="scData">
+<li class="sc-item" data-type="院内"><img src="photo-eq-waiting.jpg" alt="待合室の写真" loading="lazy"><div><h3>待合室</h3><p>木の温もりを感じる、癒しの空間です。歯科に対するイメージを感じさせないよう、配慮しました。歯科衛生士が定期的に作る掲示板で、おすすめの治療やケア用品をご案内しています。ご来院の際に、ご覧ください。</p></div></li>
+<li class="sc-item" data-type="院内"><img src="photo-eq-sterile.jpg" alt="除菌・滅菌室の写真" loading="lazy"><div><h3>除菌・滅菌室</h3><p>診療ドリルや器具の滅菌を、患者様お一人ずつ、治療前に準備しています。ミーレ社のジェットウォッシャーは、手では落としにくい頑固な汚れを洗浄する機器です。滅菌には、細心の注意を払っています。</p></div></li>
+<li class="sc-item" data-type="院内"><img src="photo-eq-careroom.jpg" alt="ケアルームの写真" loading="lazy"><div><h3>ケアルーム</h3><p>完全個室のお部屋です。主に、自費診療・ホワイトニング・口腔内メンテナンスなどで、患者様お一人の時間を確保して施術するお部屋です。</p></div></li>
+<li class="sc-item" data-type="機器"><img src="photo-eq-ceph.jpg" alt="セファロレントゲンの写真" loading="lazy"><div><h3>セファロレントゲン</h3><p>デンタル切り出し機能を搭載した、デジタルパノラマ・セファロ撮影装置です。</p></div></li>
+<li class="sc-item" data-type="機器"><img src="photo-eq-implant.jpg" alt="インプラント機器の写真" loading="lazy"><div><h3>インプラント機器</h3><p>ノーベルバイオケア社の手術機器です。</p></div></li>
+<li class="sc-item" data-type="院内"><img src="photo-eq-prevent.jpg" alt="予防管理の写真" loading="lazy"><div><h3>予防管理</h3><p>歯科衛生士が、口腔内ケア、歯周病の予防、ブラッシング指導を行っています。言葉の説明だけでは、大切なことを忘れてしまう方も多いため、ビジュアルで見せる説明を心がけています。</p></div></li>
+<li class="sc-item" data-type="機器"><img src="photo-eq-airflow.jpg" alt="エアフローの写真" loading="lazy"><div><h3>エアフロー</h3><p>ケアルームで使用しています。自費の口腔メンテナンスで、頑固な着色・茶渋・タバコの汚れを落とす機器です。</p></div></li>
+<li class="sc-item" data-type="機器"><img src="photo-eq-scanner.jpg" alt="口腔スキャナーの写真" loading="lazy"><div><h3>口腔スキャナー</h3><p>歯型を、印象材ではなく、スキャンで採る機器です。3Dデジタルデータとして記録できます。</p></div></li>
+<li class="sc-item" data-type="機器"><img src="photo-eq-caries.jpg" alt="う蝕検出装置の写真" loading="lazy"><div><h3>う蝕検出装置</h3><p>目では見えないむし歯や、歯のひび（クラック）を確認するための機器です。</p></div></li>
+<li class="sc-item" data-type="機器"><img src="photo-eq-ecg.jpg" alt="心電図機器の写真" loading="lazy"><div><h3>心電図機器</h3><p>症状に応じて、血圧・心電図などを測りながら、治療を行うことがあります。</p></div></li>
+<li class="sc-item" data-type="機器"><img src="photo-eq-breath.jpg" alt="口臭検査機器の写真" loading="lazy"><div><h3>口臭検査機器</h3><p>口腔内の口臭の検査が、簡単にできます。お気軽にご相談ください。</p></div></li>
+    </ol>
+    <div class="sc" id="sc" hidden>
+      <div class="sc-visual" id="scVisual" aria-roledescription="carousel" aria-label="院内・設備の写真"></div>
+      <div class="sc-info" aria-live="polite">
+        <div class="sc-count"><b id="scNum">01</b><span> / 11</span><em id="scType">院内</em></div>
+        <h3 id="scTitle"></h3>
+        <p id="scText"></p>
+        <div class="sc-ctrl">
+          <button type="button" id="scPrev" aria-label="前へ">‹</button>
+          <button type="button" id="scNext" aria-label="次へ">›</button>
+          <button type="button" id="scPlay" aria-label="自動再生を止める">❚❚</button>
+        </div>
+        <div class="sc-prog"><span id="scProg"></span></div>
+      </div>
+      <ol class="sc-nav" id="scNav" aria-label="項目を選ぶ"></ol>
     </div>
   </div>
 </section>
@@ -803,6 +861,60 @@ document.documentElement.classList.add('js');
       .catch(fail)
       .then(function(){ btn.disabled=false; btn.textContent='送信する'; });
   });
+})();
+</script>
+
+<script>
+(function(){
+  var data=document.getElementById('scData'), sc=document.getElementById('sc');
+  if(!data||!sc) return;
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var items=[].slice.call(data.querySelectorAll('.sc-item')).map(function(li){ return {img:li.querySelector('img').getAttribute('src'),alt:li.querySelector('img').alt,title:li.querySelector('h3').textContent,text:li.querySelector('p').textContent,type:li.getAttribute('data-type')}; });
+  var vis=document.getElementById('scVisual'), nav=document.getElementById('scNav'), N=items.length, cur=-1, playing=!reduce, inView=false, timer=null;
+  var pad=function(n){return (n<10?'0':'')+n;};
+  items.forEach(function(it,i){
+    var s=document.createElement('div'); s.className='sc-slide'; s.setAttribute('aria-hidden','true');
+    s.innerHTML='<img class="sc-bg" alt="" src="'+it.img+'"><div class="sc-veil"></div><div class="sc-fgwrap"><img class="sc-fg" alt="'+it.alt+'" src="'+it.img+'"></div>';
+    var fg=s.querySelector('.sc-fg'), bg=s.querySelector('.sc-bg');
+    fg.addEventListener('load',function(){ fg.style.maxWidth=Math.min(100,(fg.naturalWidth*2.3)/vis.clientWidth*86)+'%'; });
+    fg.addEventListener('error',function(){ s.classList.add('noimg'); });
+    vis.appendChild(s);
+    var li=document.createElement('li'), b=document.createElement('button'); b.type='button';
+    b.innerHTML='<span class="th" style="background-image:url('+it.img+')"><i>'+pad(i+1)+'</i></span><span class="nm">'+it.title+'</span>';
+    b.addEventListener('click',function(){ go(i,true); }); li.appendChild(b); nav.appendChild(li);
+  });
+  var ghost=document.createElement('div'); ghost.className='sc-ghost'; ghost.setAttribute('aria-hidden','true'); vis.appendChild(ghost);
+  var slides=vis.querySelectorAll('.sc-slide'), btns=nav.querySelectorAll('button');
+  var prog=document.getElementById('scProg'), info=document.querySelector('.sc-info');
+  function runProg(){ prog.classList.remove('run'); void prog.offsetWidth; if(playing&&!reduce) prog.classList.add('run'); }
+  function go(i,user){
+    i=(i+N)%N; if(i===cur) return;
+    if(cur>=0){ slides[cur].classList.remove('on'); slides[cur].setAttribute('aria-hidden','true'); btns[cur].removeAttribute('aria-current'); }
+    cur=i; slides[i].classList.add('on'); slides[i].removeAttribute('aria-hidden'); btns[i].setAttribute('aria-current','true');
+    var it=items[i];
+    document.getElementById('scNum').textContent=pad(i+1); document.getElementById('scType').textContent=it.type;
+    document.getElementById('scTitle').textContent=it.title; document.getElementById('scText').textContent=it.text; ghost.textContent=pad(i+1);
+    [].forEach.call(info.querySelectorAll('h3,p,.sc-count'),function(e){ e.classList.remove('sw'); void e.offsetWidth; e.classList.add('sw'); });
+    var bw=btns[i].parentNode; if(nav.scrollWidth>nav.clientWidth){ nav.scrollTo({left:bw.offsetLeft-20-(nav.clientWidth-bw.offsetWidth)/2,behavior:reduce?'auto':'smooth'}); }
+    runProg();
+  }
+  prog.addEventListener('animationend',function(){ if(playing) go(cur+1); });
+  document.getElementById('scNext').addEventListener('click',function(){ go(cur+1,true); });
+  document.getElementById('scPrev').addEventListener('click',function(){ go(cur-1,true); });
+  var pb=document.getElementById('scPlay');
+  function setPlay(v){ playing=v; pb.textContent=v?'❚❚':'▶'; pb.setAttribute('aria-label',v?'自動再生を止める':'自動再生をはじめる'); runProg(); }
+  if(reduce){ pb.style.display='none'; }
+  pb.addEventListener('click',function(){ setPlay(!playing); });
+  sc.addEventListener('mouseenter',function(){ sc.classList.add('paused'); });
+  sc.addEventListener('mouseleave',function(){ sc.classList.remove('paused'); });
+  sc.addEventListener('focusin',function(){ sc.classList.add('paused'); });
+  sc.addEventListener('focusout',function(){ sc.classList.remove('paused'); });
+  sc.setAttribute('tabindex','0');
+  sc.addEventListener('keydown',function(e){ if(e.key==='ArrowRight') go(cur+1,true); if(e.key==='ArrowLeft') go(cur-1,true); });
+  var sx=null; vis.addEventListener('touchstart',function(e){ sx=e.touches[0].clientX; },{passive:true});
+  vis.addEventListener('touchend',function(e){ if(sx===null) return; var dx=e.changedTouches[0].clientX-sx; if(Math.abs(dx)>40) go(cur+(dx<0?1:-1),true); sx=null; },{passive:true});
+  sc.hidden=false; go(0);
+  if('IntersectionObserver' in window && !reduce){ prog.classList.remove('run'); new IntersectionObserver(function(es){ var v=es[0].isIntersecting; if(v&&!inView){ inView=true; if(playing) runProg(); } if(!v){ inView=false; prog.classList.remove('run'); } },{threshold:.35}).observe(sc); }
 })();
 </script>
 </body>
